@@ -1,0 +1,30 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 100%;
+    background-image: url("../img/burger.jpg");
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(187, 41, 41);
+    font-size: 60px;
+}
+
+li {
+    font-size: 20px;
+    list-style-type: none;
+}
+
+#add {
+    text-align: center;
+}
+
+#instructions {
+    background: white;
+    border: solid 2px rgb(187, 41, 41);
+    margin: 5px;
+}

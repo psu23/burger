@@ -1,0 +1,63 @@
+<header>
+    <h1>Welcome to McRonald's</h1>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div id="plate" class="col-md-6">
+
+            <h2>Your plate: </h2>
+            <ul>
+                {{#each burgers}} {{#unless this.devoured}}
+                <li>
+                    {{this.id}}. {{this.burger_name}}
+
+                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="devoured" value="false">
+                        <button class="btn btn-success" type="submit">DEVOUR</button>
+                    </form>
+
+                </li>
+                {{/unless}} {{/each}}
+            </ul>
+        </div>
+
+        <div id="eaten" class="col-md-6">
+
+            <h2>Eaten Burgers: </h2>
+
+            <ul>
+                {{#each burgers}} {{#if this.devoured}}
+                <li>
+                    {{this.id}}. {{this.burger_name}}
+                </li>
+                {{/if}} {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id='add'>
+
+    <h2>Add a Burger</h2>
+
+    <form class="create-update-form" action="/" method="POST">
+        <div class="form-group">
+            <label for="dab">Burger Name</label>
+            <input type="text" id="dab" name="burger_name">
+        </div>
+        <button class="btn btn-primary" type="submit">+</button>
+    </form>
+</div>
+
+<div id="instructions">
+    <p>Here at McRonald's we let our customers name their burgers.</p>
+    <p>This gives all the power to you, the customer to have it your way. (Apologies if that's already a slogan at some
+        other food chain).</p>
+    <p>We at McRonald's, however, are different! We believe in an endless menu with infitite possibilities.</p>
+    <p>Please disregard that these burgers aren't real, and try to imagine their taste. This is, after all, more
+        sustainable than a real buffet.</p>
+    <p>Simply eat all the burgers on your plate by clicking on 'DEVOUR' beneath each of them.</p>
+    <p>Want more? Add some at the bottom. Our chefs MySQL and Express will cook them up in milliseconds.</p>
+    <p>When you're done, look back at all the burgers you digitally ate on the right and feel proud of yourself!</p>
+</div>

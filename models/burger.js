@@ -1,21 +1,27 @@
+//require orm.js and the object of mysql commands within
 var orm = require("../config/orm.js");
 
+//save burger as an object that will run three functions
 var burger = {
-    selectAll: function(cb) {
-        orm.selectAll("burgers", function(res) {
-            cb(res);
-        })
-    },
-    insertOne: function(columns, vals, cb) {
-        orm.insertOne("burgers", columns, vals, function(res) {
+    //run the selectAll function in orm.js...
+    selectAll: function (cb) {
+        orm.selectAll(function(res) {
             cb(res);
         });
     },
-    updateOne: function(vals, condition, cb) {
-        orm.updateOne("burgers", vals, condition, function(res) {
+    //...the insertOne function...
+    insertOne: function(burger, cb) {
+        orm.insertOne(burger, function(res) {
+            cb(res);
+        });
+    },
+    //...and the updateOne function...
+    updateOne: function(id, cb) {
+        orm.updateOne([id], function(res) {
             cb(res);
         });
     }
 };
 
+//make the burger object exportable, will be used in controllers/burgers_controller.js
 module.exports = burger;
